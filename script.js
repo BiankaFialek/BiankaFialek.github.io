@@ -375,7 +375,7 @@ function loadGallery(filter) {
 
     filteredImages.forEach((image, index) => {
         const galleryItem = document.createElement('div');
-        galleryItem.className = 'gallery-item';
+        galleryItem.className = 'gallery-item rounded-lg overflow-hidden cursor-pointer shadow-md hover:shadow-xl transition-shadow bg-gray-100';
         galleryItem.innerHTML = `
             <img src="${image.src}" alt="${image.alt}" loading="lazy">
             <div class="gallery-item-overlay">${image.alt}</div>
@@ -389,8 +389,14 @@ function setupEventListeners() {
     // Filter buttons
     document.querySelectorAll('.filter-btn').forEach(btn => {
         btn.addEventListener('click', function() {
-            document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
-            this.classList.add('active');
+            // Remove active state from all buttons
+            document.querySelectorAll('.filter-btn').forEach(b => {
+                b.classList.remove('bg-gray-900', 'text-white');
+                b.classList.add('bg-gray-200', 'text-gray-700');
+            });
+            // Add active state to clicked button
+            this.classList.remove('bg-gray-200', 'text-gray-700');
+            this.classList.add('bg-gray-900', 'text-white');
             loadGallery(this.getAttribute('data-filter'));
         });
     });

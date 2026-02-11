@@ -1,74 +1,175 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="scroll-smooth">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Bianka - Professional Modeling Portfolio</title>
-    <link rel="stylesheet" href="styles.css">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        gold: '#D4AF37',
+                        'gold-dark': '#B8941F',
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Poppins:wght@300;400;500;600&display=swap');
+
+        body {
+            font-family: 'Poppins', sans-serif;
+        }
+
+        h1, h2, h3 {
+            font-family: 'Playfair Display', serif;
+        }
+
+        .gallery-item {
+            overflow: hidden;
+            position: relative;
+            aspect-ratio: 3/4;
+        }
+
+        .gallery-item img {
+            transition: transform 0.5s ease, filter 0.3s ease;
+            object-fit: cover;
+            width: 100%;
+            height: 100%;
+        }
+
+        .gallery-item:hover img {
+            transform: scale(1.08);
+            filter: brightness(1.1);
+        }
+
+        .gallery-item-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(to top, rgba(0,0,0,0.8), transparent);
+            color: white;
+            padding: 1.5rem;
+            transform: translateY(100%);
+            transition: transform 0.3s ease;
+        }
+
+        .gallery-item:hover .gallery-item-overlay {
+            transform: translateY(0);
+        }
+
+        #lightbox.active {
+            display: flex !important;
+        }
+
+        .hero-gradient {
+            background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 50%, #1a1a1a 100%);
+        }
+    </style>
 </head>
-<body>
+<body class="bg-gray-50 text-gray-900">
     <!-- Navigation -->
-    <nav class="navbar">
-        <div class="container">
-            <div class="logo">
-                <h1>BIANKA</h1>
-                <p>Modeling Portfolio</p>
+    <nav class="fixed top-0 w-full bg-white/95 backdrop-blur-sm shadow-md z-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-20">
+                <div class="flex-shrink-0">
+                    <h1 class="text-3xl font-bold text-gray-900">BIANKA</h1>
+                    <p class="text-xs text-gray-600 tracking-widest">MODELING PORTFOLIO</p>
+                </div>
+                <ul class="hidden md:flex space-x-8">
+                    <li><a href="#home" class="text-gray-700 hover:text-gold transition-colors font-medium">Home</a></li>
+                    <li><a href="#gallery" class="text-gray-700 hover:text-gold transition-colors font-medium">Gallery</a></li>
+                    <li><a href="#about" class="text-gray-700 hover:text-gold transition-colors font-medium">About</a></li>
+                    <li><a href="#contact" class="text-gray-700 hover:text-gold transition-colors font-medium">Contact</a></li>
+                </ul>
+                <!-- Mobile menu button -->
+                <button class="md:hidden p-2" onclick="toggleMobileMenu()">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                    </svg>
+                </button>
             </div>
-            <ul class="nav-links">
-                <li><a href="#home">Home</a></li>
-                <li><a href="#gallery">Gallery</a></li>
-                <li><a href="#about">About</a></li>
-                <li><a href="#contact">Contact</a></li>
-            </ul>
+        </div>
+        <!-- Mobile menu -->
+        <div id="mobile-menu" class="hidden md:hidden bg-white border-t">
+            <div class="px-2 pt-2 pb-3 space-y-1">
+                <a href="#home" class="block px-3 py-2 text-gray-700 hover:bg-gray-100 rounded">Home</a>
+                <a href="#gallery" class="block px-3 py-2 text-gray-700 hover:bg-gray-100 rounded">Gallery</a>
+                <a href="#about" class="block px-3 py-2 text-gray-700 hover:bg-gray-100 rounded">About</a>
+                <a href="#contact" class="block px-3 py-2 text-gray-700 hover:bg-gray-100 rounded">Contact</a>
+            </div>
         </div>
     </nav>
 
     <!-- Hero Section -->
-    <section id="home" class="hero">
-        <div class="hero-content">
-            <h1>Welcome to My Portfolio</h1>
-            <p>Professional Model & Creative Visuals</p>
-            <a href="#gallery" class="cta-button">View Gallery</a>
+    <section id="home" class="hero-gradient min-h-screen flex items-center justify-center text-white pt-20">
+        <div class="text-center px-4">
+            <h1 class="text-5xl md:text-7xl font-bold mb-6 animate-fade-in">Welcome to My Portfolio</h1>
+            <p class="text-xl md:text-2xl mb-8 text-gray-300 font-light">Professional Model & Creative Visuals</p>
+            <a href="#gallery" class="inline-block bg-gold hover:bg-gold-dark text-white font-semibold px-8 py-4 rounded-full transition-all transform hover:scale-105 shadow-lg">
+                View Gallery
+            </a>
         </div>
     </section>
 
     <!-- Gallery Section -->
-    <section id="gallery" class="gallery">
-        <div class="container">
-            <h2>Portfolio Gallery</h2>
-            <div class="gallery-filters">
-                <button class="filter-btn active" data-filter="all">All</button>
-                <button class="filter-btn" data-filter="fashion">Fashion</button>
-                <button class="filter-btn" data-filter="portrait">Portrait</button>
-                <button class="filter-btn" data-filter="metro">Lifestyle</button>
+    <section id="gallery" class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 class="text-4xl md:text-5xl font-bold text-center mb-4">Portfolio Gallery</h2>
+            <p class="text-center text-gray-600 mb-12 max-w-2xl mx-auto">Explore my diverse portfolio showcasing fashion, portrait, and lifestyle photography</p>
+
+            <!-- Filters -->
+            <div class="flex flex-wrap justify-center gap-3 mb-12">
+                <button class="filter-btn px-6 py-2 rounded-full font-medium transition-all bg-gray-900 text-white" data-filter="all">
+                    All
+                </button>
+                <button class="filter-btn px-6 py-2 rounded-full font-medium transition-all bg-gray-200 text-gray-700 hover:bg-gray-300" data-filter="fashion">
+                    Fashion
+                </button>
+                <button class="filter-btn px-6 py-2 rounded-full font-medium transition-all bg-gray-200 text-gray-700 hover:bg-gray-300" data-filter="portrait">
+                    Portrait
+                </button>
+                <button class="filter-btn px-6 py-2 rounded-full font-medium transition-all bg-gray-200 text-gray-700 hover:bg-gray-300" data-filter="metro">
+                    Lifestyle
+                </button>
             </div>
-            <div class="gallery-grid" id="gallery-grid">
-                <!-- Images will be loaded here by JavaScript -->
+
+            <!-- Gallery Grid -->
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6" id="gallery-grid">
+                <!-- Images loaded by JavaScript -->
             </div>
         </div>
     </section>
 
     <!-- About Section -->
-    <section id="about" class="about">
-        <div class="container">
-            <h2>About Me</h2>
-            <div class="about-content">
-                <div class="about-text">
-                    <p>Hello! I'm Bianka, a professional model passionate about creating stunning visual content. With experience in fashion, portrait, and lifestyle photography, I bring professionalism and creativity to every project.</p>
-                    <p>My portfolio showcases diverse styling, locations, and concepts that demonstrate my versatility and dedication to the craft.</p>
+    <section id="about" class="py-20 bg-gray-50">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 class="text-4xl md:text-5xl font-bold text-center mb-12">About Me</h2>
+            <div class="grid md:grid-cols-2 gap-12 items-center">
+                <div class="space-y-6">
+                    <p class="text-lg text-gray-700 leading-relaxed">
+                        Hello! I'm Bianka, a professional model passionate about creating stunning visual content. With experience in fashion, portrait, and lifestyle photography, I bring professionalism and creativity to every project.
+                    </p>
+                    <p class="text-lg text-gray-700 leading-relaxed">
+                        My portfolio showcases diverse styling, locations, and concepts that demonstrate my versatility and dedication to the craft.
+                    </p>
                 </div>
-                <div class="about-stats">
-                    <div class="stat">
-                        <h3>250+</h3>
-                        <p>Photos</p>
+                <div class="grid grid-cols-3 gap-6">
+                    <div class="text-center p-6 bg-white rounded-lg shadow-md">
+                        <h3 class="text-4xl font-bold text-gold mb-2">350+</h3>
+                        <p class="text-gray-600 font-medium">Photos</p>
                     </div>
-                    <div class="stat">
-                        <h3>50+</h3>
-                        <p>Looks</p>
+                    <div class="text-center p-6 bg-white rounded-lg shadow-md">
+                        <h3 class="text-4xl font-bold text-gold mb-2">50+</h3>
+                        <p class="text-gray-600 font-medium">Looks</p>
                     </div>
-                    <div class="stat">
-                        <h3>30+</h3>
-                        <p>Sets</p>
+                    <div class="text-center p-6 bg-white rounded-lg shadow-md">
+                        <h3 class="text-4xl font-bold text-gold mb-2">30+</h3>
+                        <p class="text-gray-600 font-medium">Sets</p>
                     </div>
                 </div>
             </div>
@@ -76,35 +177,58 @@
     </section>
 
     <!-- Contact Section -->
-    <section id="contact" class="contact">
-        <div class="container">
-            <h2>Get In Touch</h2>
-            <div class="contact-content">
-                <p>Interested in collaboration or bookings?</p>
-                <a href="mailto:your-email@example.com" class="cta-button">Send Email</a>
-                <div class="social-links">
-                    <a href="https://instagram.com" target="_blank">Instagram</a>
-                    <a href="https://facebook.com" target="_blank">Facebook</a>
-                    <a href="https://linkedin.com" target="_blank">LinkedIn</a>
-                </div>
+    <section id="contact" class="py-20 bg-white">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <h2 class="text-4xl md:text-5xl font-bold mb-6">Get In Touch</h2>
+            <p class="text-xl text-gray-600 mb-8">Interested in collaboration or bookings?</p>
+            <a href="mailto:your-email@example.com" class="inline-block bg-gold hover:bg-gold-dark text-white font-semibold px-8 py-4 rounded-full transition-all transform hover:scale-105 shadow-lg mb-8">
+                Send Email
+            </a>
+            <div class="flex justify-center space-x-6">
+                <a href="https://instagram.com" target="_blank" class="text-gray-700 hover:text-gold transition-colors text-lg font-medium">
+                    Instagram
+                </a>
+                <span class="text-gray-300">|</span>
+                <a href="https://facebook.com" target="_blank" class="text-gray-700 hover:text-gold transition-colors text-lg font-medium">
+                    Facebook
+                </a>
+                <span class="text-gray-300">|</span>
+                <a href="https://linkedin.com" target="_blank" class="text-gray-700 hover:text-gold transition-colors text-lg font-medium">
+                    LinkedIn
+                </a>
             </div>
         </div>
     </section>
 
     <!-- Lightbox Modal -->
-    <div id="lightbox" class="lightbox">
-        <span class="close">&times;</span>
-        <img class="lightbox-content" id="lightbox-img" src="" alt="">
-        <div class="lightbox-caption"></div>
-        <button class="prev">&#10094;</button>
-        <button class="next">&#10095;</button>
+    <div id="lightbox" class="hidden fixed inset-0 bg-black/95 z-50 items-center justify-center p-4">
+        <button class="close absolute top-6 right-6 text-white text-4xl font-light hover:text-gold transition-colors cursor-pointer z-10">&times;</button>
+        <img class="max-w-full max-h-[85vh] object-contain" id="lightbox-img" src="" alt="">
+        <div class="lightbox-caption absolute bottom-8 left-1/2 transform -translate-x-1/2 text-white text-lg bg-black/50 px-6 py-3 rounded-full"></div>
+        <button class="prev absolute left-6 top-1/2 transform -translate-y-1/2 text-white text-5xl font-light hover:text-gold transition-colors cursor-pointer">&#10094;</button>
+        <button class="next absolute right-6 top-1/2 transform -translate-y-1/2 text-white text-5xl font-light hover:text-gold transition-colors cursor-pointer">&#10095;</button>
     </div>
 
     <!-- Footer -->
-    <footer>
-        <p>&copy; 2026 Bianka - Professional Modeling Portfolio | Built with HTML & CSS</p>
+    <footer class="bg-gray-900 text-gray-400 py-8">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <p>&copy; 2026 Bianka - Professional Modeling Portfolio | Built with Tailwind CSS</p>
+        </div>
     </footer>
 
+    <script>
+        function toggleMobileMenu() {
+            const menu = document.getElementById('mobile-menu');
+            menu.classList.toggle('hidden');
+        }
+
+        // Close mobile menu when clicking a link
+        document.querySelectorAll('#mobile-menu a').forEach(link => {
+            link.addEventListener('click', () => {
+                document.getElementById('mobile-menu').classList.add('hidden');
+            });
+        });
+    </script>
     <script src="script.js"></script>
 </body>
 </html>
