@@ -1,0 +1,106 @@
+╔════════════════════════════════════════════════════════════════╗
+║   BIANKA - MODELING PORTFOLIO SETUP GUIDE                      ║
+╚════════════════════════════════════════════════════════════════╝
+
+✅ WHAT'S READY:
+  • Professional HTML portfolio website
+  • Responsive design (works on phone, tablet, desktop)
+  • Photo gallery with filtering
+  • Lightbox viewer for full-size images
+  • Mobile navigation
+  • Contact section
+
+📋 QUICK CHECKLIST:
+
+[ ] 1. Create GitHub Account
+    → Go to github.com and sign up (takes 2 minutes)
+
+[ ] 2. Create Repository named: your-username.github.io
+    → Go to github.com → click + → New repository
+    → Name MUST be: your-username.github.io
+    → Make it PUBLIC
+
+[ ] 3. Upload Portfolio Files
+    → Upload these files to your repository:
+       - index.html
+       - styles.css
+       - script.js
+
+[ ] 4. Add Images
+    → Upload all images from: compressed_media folder
+    → Create folder "images" in your repository
+    → Upload all .jpg files there
+
+[ ] 5. Update Image Paths in script.js
+    → Open script.js
+    → Change image paths from:
+       '../compressed_media/image.jpg'
+    → To:
+       'images/image.jpg'
+
+[ ] 6. Update Contact Info
+    → Open index.html
+    → Find: mailto:your-email@example.com
+    → Replace with your actual email
+
+[ ] 7. Wait & Visit
+    → Your site will be live at:
+       https://your-username.github.io
+    → Takes 1-2 minutes to deploy
+
+
+🎯 HOW TO UPLOAD TO GITHUB:
+
+OPTION A - No coding needed (Easy)
+─────────────────────────────────
+1. Go to your GitHub repository
+2. Click "Add file" → "Upload files"
+3. Drag all files here
+4. Commit changes
+
+OPTION B - Using Git (Better)
+──────────────────────────────
+1. Install Git: git-scm.com/download
+2. In terminal:
+   cd /home/bianka/Pictures/Porfolio/modeling-portfolio
+   git init
+   git add .
+   git commit -m "Initial portfolio"
+   git branch -M main
+   git remote add origin https://github.com/USERNAME/USERNAME.github.io
+   git push -u origin main
+
+(Replace USERNAME with your GitHub username)
+
+
+📸 CURRENT IMAGES READY:
+   • 338 compressed images from your portfolio
+   • Location: /home/bianka/Pictures/Porfolio/compressed_media/
+   • Ready to upload to GitHub
+
+
+✨ FEATURES:
+   ✓ Gallery with category filters
+   ✓ Full-screen lightbox viewer
+   ✓ Keyboard navigation (arrow keys)
+   ✓ Mobile responsive
+   ✓ Professional design
+   ✓ Smooth animations
+   ✓ Contact section
+   ✓ Social media links
+
+
+🔧 CUSTOMIZATION LATER:
+   • Add/remove images
+   • Change colors in styles.css
+   • Update contact email
+   • Add social media links
+   • Add bio information
+
+
+📞 SUPPORT:
+   • GitHub Help: docs.github.com/pages
+   • Having issues? Check README.md
+
+
+Ready to go live? Let's do it! 🚀

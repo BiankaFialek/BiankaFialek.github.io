@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bianka - Professional Modeling Portfolio</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="container">
+            <div class="logo">
+                <h1>BIANKA</h1>
+                <p>Modeling Portfolio</p>
+            </div>
+            <ul class="nav-links">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#gallery">Gallery</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="hero-content">
+            <h1>Welcome to My Portfolio</h1>
+            <p>Professional Model & Creative Visuals</p>
+            <a href="#gallery" class="cta-button">View Gallery</a>
+        </div>
+    </section>
+
+    <!-- Gallery Section -->
+    <section id="gallery" class="gallery">
+        <div class="container">
+            <h2>Portfolio Gallery</h2>
+            <div class="gallery-filters">
+                <button class="filter-btn active" data-filter="all">All</button>
+                <button class="filter-btn" data-filter="fashion">Fashion</button>
+                <button class="filter-btn" data-filter="portrait">Portrait</button>
+                <button class="filter-btn" data-filter="metro">Lifestyle</button>
+            </div>
+            <div class="gallery-grid" id="gallery-grid">
+                <!-- Images will be loaded here by JavaScript -->
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="about">
+        <div class="container">
+            <h2>About Me</h2>
+            <div class="about-content">
+                <div class="about-text">
+                    <p>Hello! I'm Bianka, a professional model passionate about creating stunning visual content. With experience in fashion, portrait, and lifestyle photography, I bring professionalism and creativity to every project.</p>
+                    <p>My portfolio showcases diverse styling, locations, and concepts that demonstrate my versatility and dedication to the craft.</p>
+                </div>
+                <div class="about-stats">
+                    <div class="stat">
+                        <h3>250+</h3>
+                        <p>Photos</p>
+                    </div>
+                    <div class="stat">
+                        <h3>50+</h3>
+                        <p>Looks</p>
+                    </div>
+                    <div class="stat">
+                        <h3>30+</h3>
+                        <p>Sets</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact">
+        <div class="container">
+            <h2>Get In Touch</h2>
+            <div class="contact-content">
+                <p>Interested in collaboration or bookings?</p>
+                <a href="mailto:your-email@example.com" class="cta-button">Send Email</a>
+                <div class="social-links">
+                    <a href="https://instagram.com" target="_blank">Instagram</a>
+                    <a href="https://facebook.com" target="_blank">Facebook</a>
+                    <a href="https://linkedin.com" target="_blank">LinkedIn</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Lightbox Modal -->
+    <div id="lightbox" class="lightbox">
+        <span class="close">&times;</span>
+        <img class="lightbox-content" id="lightbox-img" src="" alt="">
+        <div class="lightbox-caption"></div>
+        <button class="prev">&#10094;</button>
+        <button class="next">&#10095;</button>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2026 Bianka - Professional Modeling Portfolio | Built with HTML & CSS</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>

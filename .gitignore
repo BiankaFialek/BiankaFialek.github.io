@@ -1,0 +1,24 @@
+# OS files
+.DS_Store
+Thumbs.db
+*.swp
+*.swo
+*~
+
+# IDE
+.vscode/
+.idea/
+*.code-workspace
+
+# System
+.env
+.env.local
+
+# Logs
+*.log
+npm-debug.log
+
+# Dependencies
+node_modules/
+__pycache__/
+*.pyc
